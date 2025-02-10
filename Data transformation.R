@@ -19,7 +19,7 @@ flights|>
 
 flights |> 
   filter(month == 1 | month == 2)
-
+0--
 flights |> 
   filter(month %in% c(1, 2))
 jan1 <- flights |> 
@@ -269,7 +269,8 @@ df |>
 
 df |>
   group_by(y, z) |>
-  mutate(mean_x = mean(x))   )
+  mutate(mean_x = mean(x)
+
 flights |> 
   summarize(
     delay = mean(dep_delay, na.rm = TRUE), 
