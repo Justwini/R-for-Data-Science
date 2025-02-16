@@ -18,10 +18,44 @@ ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
 
 ggplot(mpg, aes(x = displ, y = hwy)) + 
   geom_point(color = "blue")
+#You can set the visual properties of your geom manually as an argument of your geom function 
+#(outside of aes()) instead of relying on a variable mapping to determine the appearance. 
+
 #Mapping an unordered discrete (categorical) variable (class) to an ordered aesthetic
 #(size or alpha) is generally not a good idea because it implies a ranking that
 #does not in fact exist.
 
+# Excercise ---------------------------------------------------------------
+
+#1 Create a scatterplot of hwy vs. displ where the points are pink filled in triangles.
+ggplot(mpg,  aes(x = displ, y = hwy)) + 
+  geom_point(color = "deeppink", shape=17)
+#Why did the following code not result in a plot with blue points?
+  
+  ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy, color = "blue"))
+#-because it is in aes area, it not have variable information it shoud be after aes
+  ggplot(mpg) + 
+    geom_point(aes(x = displ, y = hwy ),color = "blue")
+  #or
+  ggplot(mpg,aes(x = displ, y = hwy ) ) + 
+    geom_point(color = "blue")
+#What does the stroke aesthetic do? What shapes does it work with? (Hint: use ?geom_point)
+?geom_point
+  ggplot(mpg) + 
+    geom_point(aes(x = displ, y = hwy),stroke=5) 
+  
+  ggplot(mpg) + 
+    geom_point(aes(x = displ, y = hwy),stroke=1)
+  ggplot(mpg) + 
+    geom_point(aes(x = displ, y = hwy))
+#-Stroke changes the size of the border for shapes
+  
+#What happens if you map an aesthetic to something other than a variable name, like aes(color = displ < 5)? Note, you’ll also need to specify x and y.
+  ggplot(mpg) + 
+    geom_point(aes(x = displ, y = hwy,color = displ < 5))
+#display two group in color one where argument is less the 5 and second where argument is more that 5
+  
 # Geometric objects -------------------------------------------------------
 
 # Left
@@ -91,6 +125,7 @@ ggplot(mpg, aes(x = hwy, y = drv, fill = drv, color = drv)) +
 # Exercises ---------------------------------------------------------------
 
 #1 What geom would you use to draw a line chart? A boxplot? A histogram? An area chart?
+ggplot(mpg, aes())
   
 #2 Earlier in this chapter we used show.legend without explaining it:
   
